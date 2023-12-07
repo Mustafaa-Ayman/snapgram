@@ -1,18 +1,21 @@
 import { Models } from 'appwrite'
-import React from 'react'
 import Loader from './Loader'
 import GridPostList from './GridPostList'
 
+type DocumentList<T> = {
+  documents: T[];
+};
+
 type SearchResultsProps = {
     isSearchFetching : boolean,
-    searchedPosts: Models.Document[]
+    searchedPosts: DocumentList<Models.Document> | undefined;
 }
 const SearchResults = ({isSearchFetching , searchedPosts} : SearchResultsProps) => {
     if(isSearchFetching) return <Loader/>
 
-    if(searchedPosts && searchedPosts.documents.length > 0) return (
+    if(searchedPosts  &&  searchedPosts?.documents.length > 0) return (
     <GridPostList
-        posts={searchedPosts.documents}
+        posts={searchedPosts?.documents}
     />
     )
   return (
