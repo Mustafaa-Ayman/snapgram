@@ -66,7 +66,7 @@ const PostDetails = () => {
                   <Button
                     onClick={handleDeletePost}
                     variant= "ghost"
-                    className={` ${user.id !== post?.creator.$id} && "ghost_details-delete_btn hidden"`}
+                    className={` ${user.id !== post?.creator.$id && "ghost_details-delete_btn"}"`}
 
                   >
                     <img
